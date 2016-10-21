@@ -1,0 +1,11 @@
+c:\users\xiaobaxiang\documents\visual studio 2012\Projects\qrCodeTest\qrCodeTest\bin\Debug\qrCodeTest.exe.config
+c:\users\xiaobaxiang\documents\visual studio 2012\Projects\qrCodeTest\qrCodeTest\bin\Debug\qrCodeTest.exe
+c:\users\xiaobaxiang\documents\visual studio 2012\Projects\qrCodeTest\qrCodeTest\bin\Debug\qrCodeTest.pdb
+c:\users\xiaobaxiang\documents\visual studio 2012\Projects\qrCodeTest\qrCodeTest\obj\Debug\qrCodeTest.csprojResolveAssemblyReference.cache
+c:\users\xiaobaxiang\documents\visual studio 2012\Projects\qrCodeTest\qrCodeTest\obj\Debug\qrCodeTest.Properties.Resources.resources
+c:\users\xiaobaxiang\documents\visual studio 2012\Projects\qrCodeTest\qrCodeTest\obj\Debug\qrCodeTest.csproj.GenerateResource.Cache
+c:\users\xiaobaxiang\documents\visual studio 2012\Projects\qrCodeTest\qrCodeTest\obj\Debug\qrCodeTest.exe
+c:\users\xiaobaxiang\documents\visual studio 2012\Projects\qrCodeTest\qrCodeTest\obj\Debug\qrCodeTest.pdb
+c:\users\xiaobaxiang\documents\visual studio 2012\Projects\qrCodeTest\qrCodeTest\obj\Debug\qrCodeTest.Form1.resources
+C:\Users\xiaobaxiang\documents\visual studio 2012\Projects\qrCodeTest\qrCodeTest\bin\Debug\Gma.QrCodeNet.Encoding.dll
+C:\Users\xiaobaxiang\documents\visual studio 2012\Projects\qrCodeTest\qrCodeTest\bin\Debug\Gma.QrCodeNet.Encoding.pdb
