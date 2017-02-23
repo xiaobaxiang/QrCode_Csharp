@@ -4,3 +4,8 @@ C:\Users\xiaobaxiang\documents\visual studio 2012\Projects\qrCodeTest\ConsoleApp
 C:\Users\xiaobaxiang\documents\visual studio 2012\Projects\qrCodeTest\ConsoleApplication1\obj\Debug\ConsoleApplication1.csprojResolveAssemblyReference.cache
 C:\Users\xiaobaxiang\documents\visual studio 2012\Projects\qrCodeTest\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
 C:\Users\xiaobaxiang\documents\visual studio 2012\Projects\qrCodeTest\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb
+C:\Users\xiaobaxiang\Documents\visual studio 2012\Projects\qrCodeTestLearn\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
+C:\Users\xiaobaxiang\Documents\visual studio 2012\Projects\qrCodeTestLearn\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
+C:\Users\xiaobaxiang\Documents\visual studio 2012\Projects\qrCodeTestLearn\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb
+C:\Users\xiaobaxiang\Documents\visual studio 2012\Projects\qrCodeTestLearn\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
+C:\Users\xiaobaxiang\Documents\visual studio 2012\Projects\qrCodeTestLearn\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb

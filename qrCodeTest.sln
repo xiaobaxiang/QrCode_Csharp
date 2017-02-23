@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "qrCodeTest", "qrCodeTest\qrCodeTest.csproj", "{CC205D94-A65A-45D8-879D-ED93612567A9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestForm", "qrCodeTest\TestForm.csproj", "{CC205D94-A65A-45D8-879D-ED93612567A9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gma.QrCodeNet.Encoding", "Qrsource\Gma.QrCodeNet.Encoding.csproj", "{7D1A4631-669A-470E-8A74-48C0CB3D00A3}"
 EndProject
@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QrCodeTest_console", "QrCod
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApplication1", "ConsoleApplication1\ConsoleApplication1.csproj", "{BF1A493B-65A1-4752-88CA-256C4194E508}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestCsharp", "TestCsharp\TestCsharp.csproj", "{8EF839FE-8958-4EBB-AF88-71203A5D2FAB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestConsole", "TestCsharp\TestConsole.csproj", "{8EF839FE-8958-4EBB-AF88-71203A5D2FAB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

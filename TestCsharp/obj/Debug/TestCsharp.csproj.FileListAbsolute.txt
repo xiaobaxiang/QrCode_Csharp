@@ -6,3 +6,7 @@ C:\Users\xiaobaxiang\documents\visual studio 2012\Projects\qrCodeTest\TestCsharp
 C:\Users\xiaobaxiang\documents\visual studio 2012\Projects\qrCodeTest\TestCsharp\bin\Debug\itextsharp.dll
 C:\Users\xiaobaxiang\Documents\visual studio 2012\Projects\qrCodeTestLearn\TestCsharp\obj\Debug\TestCsharp.exe
 C:\Users\xiaobaxiang\Documents\visual studio 2012\Projects\qrCodeTestLearn\TestCsharp\obj\Debug\TestCsharp.pdb
+C:\Users\xiaobaxiang\Documents\visual studio 2012\Projects\qrCodeTestLearn\TestCsharp\bin\Debug\TestCsharp.exe
+C:\Users\xiaobaxiang\Documents\visual studio 2012\Projects\qrCodeTestLearn\TestCsharp\bin\Debug\TestCsharp.pdb
+C:\Users\xiaobaxiang\Documents\visual studio 2012\Projects\qrCodeTestLearn\TestCsharp\bin\Debug\itextsharp.dll
+C:\Users\xiaobaxiang\Documents\visual studio 2012\Projects\qrCodeTestLearn\TestCsharp\obj\Debug\TestCsharp.csprojResolveAssemblyReference.cache

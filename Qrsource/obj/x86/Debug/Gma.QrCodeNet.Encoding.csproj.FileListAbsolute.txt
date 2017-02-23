@@ -7,3 +7,8 @@ C:\Users\xiaobaxiang\Documents\Visual Studio 2012\Projects\qrCodeTest\Qrsource\b
 C:\Users\xiaobaxiang\Documents\Visual Studio 2012\Projects\qrCodeTest\Qrsource\obj\x86\Debug\Gma.QrCodeNet.Encoding.dll
 C:\Users\xiaobaxiang\Documents\Visual Studio 2012\Projects\qrCodeTest\Qrsource\obj\x86\Debug\Gma.QrCodeNet.Encoding.pdb
 C:\Users\xiaobaxiang\documents\visual studio 2012\Projects\qrCodeTest\Qrsource\obj\x86\Debug\Gma.QrCodeNet.Encoding.csprojResolveAssemblyReference.cache
+C:\Users\xiaobaxiang\Documents\visual studio 2012\Projects\qrCodeTestLearn\Qrsource\bin\Debug\Gma.QrCodeNet.Encoding.dll
+C:\Users\xiaobaxiang\Documents\visual studio 2012\Projects\qrCodeTestLearn\Qrsource\bin\Debug\Gma.QrCodeNet.Encoding.pdb
+C:\Users\xiaobaxiang\Documents\visual studio 2012\Projects\qrCodeTestLearn\Qrsource\obj\x86\Debug\Gma.QrCodeNet.Encoding.csprojResolveAssemblyReference.cache
+C:\Users\xiaobaxiang\Documents\visual studio 2012\Projects\qrCodeTestLearn\Qrsource\obj\x86\Debug\Gma.QrCodeNet.Encoding.dll
+C:\Users\xiaobaxiang\Documents\visual studio 2012\Projects\qrCodeTestLearn\Qrsource\obj\x86\Debug\Gma.QrCodeNet.Encoding.pdb

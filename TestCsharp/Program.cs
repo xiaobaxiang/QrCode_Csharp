@@ -1,11 +1,25 @@
 ﻿using iTextSharp.text;
 using iTextSharp.text.pdf;
+using NPOI.HSSF.UserModel;
+using NPOI.HSSF.Util;
+using NPOI.SS.UserModel;
+using NPOI.SS.Util;
+using OfficeOpenXml;
+using OfficeOpenXml.Style;
+using OfficeOpenXml.Drawing;
+using OfficeOpenXml.Drawing.Chart;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Net;
+using System.Reflection;
 using System.Text;
+using System.Web.Script.Serialization;
+using System.Drawing;
+using OfficeOpenXml.Style.XmlAccess;
 
 namespace TestCsharp
 {
@@ -34,13 +48,13 @@ namespace TestCsharp
             //Document:（文档）生成pdf必备的一个对象,生成一个Document示例
             Document document = new Document(PageSize.A4, 30, 30, 5, 5);
             //为该Document创建一个Writer实例： 
-            string strPdfFileName = System.AppDomain.CurrentDomain.BaseDirectory+"PDFOutput"+ System.DateTime.Now.ToString("yyyyMMddhhmmssff")+".pdf";
+            string strPdfFileName = System.AppDomain.CurrentDomain.BaseDirectory + "PDFOutput" + System.DateTime.Now.ToString("yyyyMMddhhmmssff") + ".pdf";
             //string strDocFileName = System.AppDomain.CurrentDomain.BaseDirectory   "WordOutput\\"   "测试PDF文件_"   System.DateTime.Now.ToString("yyyyMMddhhmmssff")   ".doc";
             iTextSharp.text.pdf.PdfWriter.GetInstance(document, new FileStream(strPdfFileName, FileMode.Create));
             //iTextSharp.text.rtf.RtfWriter.getInstance(document, new FileStream(strDocFileName, FileMode.Create));
             //打开当前Document
             document.Open();
- 
+
             //为当前Document添加内容：
             document.Add(new Paragraph("Hello World"));
             //另起一行。有几种办法建立一个段落，如： 
@@ -51,7 +65,7 @@ namespace TestCsharp
             p1.Add("you can add string here\n\t");
             p1.Add(new Chunk("you can add chunks \n")); p1.Add(new Phrase("or you can add phrases.\n"));
             document.Add(p1); document.Add(p2); document.Add(p3);
- 
+
             //创建了一个内容为“hello World”、红色、斜体、COURIER字体、尺寸20的一个块： 
             Chunk chunk = new Chunk("Hello world", FontFactory.GetFont(FontFactory.COURIER, 20, iTextSharp.text.Font.NORMAL, new iTextSharp.text.BaseColor(255, 0, 0)));
             document.Add(chunk);
@@ -64,7 +78,7 @@ namespace TestCsharp
             chunk1.SetTextRise(5);
             document.Add(chunk1);
             document.Add(chunk2);
- 
+
             //外部链接示例： 
             //BaseFont bfSun1 = BaseFont.createFont(@"C:\WINDOWS\Fonts\SIMHEI.TTF", BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
             //iTextSharp.text.Font font1 = new iTextSharp.text.Font(bfSun1, 16);
@@ -83,33 +97,33 @@ namespace TestCsharp
             //anchor2.Reference = "#link1";
             //document.Add(anchor); document.Add(anchor1); document.Add(anchor2);
             BaseFont bfHei = BaseFont.CreateFont(@"c:\WINDOWS\fonts\SIMHEI.TTF", BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
-             font = new iTextSharp.text.Font(bfHei, 32);
-             text = "这是黑体字测试！";
+            font = new iTextSharp.text.Font(bfHei, 32);
+            text = "这是黑体字测试！";
             document.Add(new Paragraph(text, font));
- 
+
             //TextWordPDF wordpdf = new TextWordPDF();
             //string sFontName = wordpdf.GetFontName(TextWordPDF.FontName.黑体);
             //bfSun = BaseFont.createFont(sFontName, BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
             //font = new iTextSharp.text.Font(bfSun, 16);
             //text = "这是字体集合中的新宋体测试！";
             //document.Add(new Paragraph(text, font));
- 
+
             //排序列表示例： 
             List list = new List(true, 20);
             list.Add(new iTextSharp.text.ListItem("First line"));
             list.Add(new iTextSharp.text.ListItem("The second line is longer to see what happens once the end of the line is reached. Will it start on a new line?"));
             document.Add(list);
- 
+
             //文本注释： 
             Annotation a = new Annotation("authors", "Maybe its because I wanted to be an author myself that I wrote iText.");
             document.Add(a);
- 
+
             ////包含页码没有任何边框的页脚。 
             //HeaderFooter footer = new HeaderFooter(new Phrase("This is page: "), true);
             //footer.Border = iTextSharp.text.Rectangle.NO_BORDER;
             //document.footer = footer;
- 
- 
+
+
             //Chapter对象和Section对象自动构建一个树：
             iTextSharp.text.Font f1 = new iTextSharp.text.Font();
             f1.SetStyle(iTextSharp.text.Font.BOLD.ToString());
@@ -118,7 +132,7 @@ namespace TestCsharp
             Paragraph sTitle = new Paragraph("This is section 1 in chapter 1", f1);
             Section section = chapter.AddSection(sTitle, 1);
             document.Add(chapter);
- 
+
             ////构建了一个简单的表： 
             //iTextSharp.text.pdf.PdfPTable aTable = new PdfPTable(4);
             //aTable.AutoFillEmptyCells = true;
@@ -156,7 +170,7 @@ namespace TestCsharp
             //cell.HorizontalAlignment = Element.ALIGN_CENTER;
             //cell.VerticalAlignment = Element.ALIGN_MIDDLE;
             //document.Add(table);
- 
+
             //Graphic g = new Graphic();
             //g.setBorder(3f, 5f);
             //document.Add(g);
@@ -173,17 +187,319 @@ namespace TestCsharp
             //g = new Graphic();
             //g.setHorizontalLine(2f, 80f,new iTextSharp.text.Color(System.Drawing.Color.Black));
             //document.Add(g);
- 
+
             //关闭Document
             document.Close();
- 
+
 
         }
+        //static void Main(string[] args)
+        //{
+        //    //Console.WriteLine(DateTime.Now.ToString("MM", DateTimeFormatInfo.InvariantInfo));
+        //    //Console.WriteLine(DateTime.Now.ToString("MMM", new System.Globalization.CultureInfo("en-us")));
+
+        //    for (int i = 'a'; i < 'z'; i++)
+        //        Console.WriteLine(Encoding.ASCII.GetString(new byte[]{(byte)i}));
+        //        Console.ReadKey();
+        //}
+
         static void Main(string[] args)
         {
-            Console.WriteLine(DateTime.Now.ToString("MM", DateTimeFormatInfo.InvariantInfo));
-            Console.WriteLine(DateTime.Now.ToString("MMM", new System.Globalization.CultureInfo("en-us")));
-            Console.ReadKey();
+            //TestNpoi();
+            ExcelPackage ex = new ExcelPackage(new FileInfo("Epplus.xlsx"));
+            ExcelWorkbook wb= ex.Workbook;
+            ExcelWorksheet ws = wb.Worksheets["TestWorkSheet"];
+            //配置文件属性  
+            wb.Properties.Category = "类别";
+            wb.Properties.Author = "作者";
+            wb.Properties.Comments = "备注";
+            wb.Properties.Company = "公司";
+            wb.Properties.Keywords = "关键字";
+            wb.Properties.Manager = "管理者";
+            wb.Properties.Status = "内容状态";
+            wb.Properties.Subject = "主题";
+            wb.Properties.Title = "标题";
+            wb.Properties.LastModifiedBy = "最后一次保存者";  
+
+            //写工作表
+            ws.Cells[1, 1].Value = "Hello";
+            //ws.Cells.Style.Fill.PatternType = ExcelFillStyle.Solid;
+            //ws.Cells.Style.Fill.BackgroundColor.Indexed =NPOI.HSSF.Util.HSSFColor.Grey25Percent.Index;
+            ws.Cells["B1"].Value = "World";
+            ws.Cells[3, 3, 3, 5].Merge = true;
+            ws.Cells[3, 3].Value = "Cells[3, 3, 3, 5]合并";
+            ws.Cells["A4:D5"].Merge = true;
+            ws.Cells["A4"].Value = "Cells[\"A4:D5\"]合并";
+            ex.Save();
         }
+
+        private static void TestNpoi()
+        {
+            HSSFWorkbook workbook = new HSSFWorkbook();
+            HSSFSheet sheet = workbook.CreateSheet("Sheet1") as HSSFSheet;
+            HSSFRow dataRow = sheet.CreateRow(1) as HSSFRow;
+            dataRow = sheet.CreateRow(1) as HSSFRow;
+            CellRangeAddress region = new CellRangeAddress(1, 2, 1, 2);
+            sheet.AddMergedRegion(region);
+            ICell cell = dataRow.CreateCell(1);
+            cell.SetCellValue("test");
+
+            ICellStyle style = workbook.CreateCellStyle();
+            style.BorderBottom = BorderStyle.Thin;
+            style.BorderLeft = BorderStyle.Thin;
+            style.BorderRight = BorderStyle.Thin;
+            style.BorderTop = BorderStyle.Thin;
+            style.BottomBorderColor = HSSFColor.Black.Index;
+            style.LeftBorderColor = HSSFColor.Black.Index;
+            style.RightBorderColor = HSSFColor.Black.Index;
+            style.TopBorderColor = HSSFColor.Black.Index;
+
+            //cell.CellStyle = style;  
+            for (int i = region.FirstRow; i <= region.LastRow; i++)
+            {
+                IRow row = HSSFCellUtil.GetRow(i, sheet);
+                for (int j = region.FirstColumn; j <= region.LastColumn; j++)
+                {
+                    ICell singleCell = HSSFCellUtil.GetCell(row, (short)j);
+                    singleCell.CellStyle = style;
+                }
+            }
+
+            using (MemoryStream ms = new MemoryStream())
+            {
+                workbook.Write(ms);
+                ms.Flush();
+                ms.Position = 0;
+                using (FileStream fs = new FileStream("E:\\TestConsole.xls", FileMode.Create, FileAccess.Write))
+                {
+                    byte[] data = ms.ToArray();
+                    fs.Write(data, 0, data.Length);
+                    fs.Flush();
+                }
+            }
+        }
+
+
+        public string GetResponse<T>(string requestUrl, string requestMethod, T inPutModel)
+        {
+            string retString = null;
+            var postDataStr = new JavaScriptSerializer().Serialize(inPutModel);
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(requestUrl);
+            request.Method = requestMethod;
+            request.ContentType = "application/json";
+            request.ContentLength = Encoding.UTF8.GetByteCount(postDataStr);
+            //request.Headers.Add("Token", "123");//添加验证
+            Stream myRequestStream = request.GetRequestStream();
+            //StreamWriter myStreamWriter = new StreamWriter(myRequestStream, Encoding.GetEncoding("utf-8"));
+            //myStreamWriter.Write(postDataStr);
+            //myStreamWriter.Close();
+
+            byte[] byteArray = Encoding.UTF8.GetBytes(postDataStr);
+            Stream dataStream = request.GetRequestStream();
+            dataStream.Write(byteArray, 0, byteArray.Length);
+            dataStream.Close();
+
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            Stream myResponseStream = response.GetResponseStream();
+            if (myResponseStream != null)
+            {
+                StreamReader myStreamReader = new StreamReader(myResponseStream, Encoding.GetEncoding("utf-8"));
+                retString = myStreamReader.ReadToEnd();
+                // ar retObj = new JavaScriptSerializer().Deserialize<AccountResultModel>(retString.Remove(retString.Length - 1, 1).Remove(0, 1).Replace("\\", ""));
+                myStreamReader.Close();
+            }
+            if (myResponseStream != null) myResponseStream.Close();
+            return retString;
+        }
+
     }
+
+
+    public static class ListExt
+    {
+
+        public static IEnumerable<T> ForeachOne<T>(this IEnumerable<T> eles, Action<T> act)
+        {
+            if (act != null)
+                foreach (T e in eles)
+                {
+                    act(e);
+                }
+            return eles;
+        }
+
+        ////根据model将Table转成list
+        public static IEnumerable<T> TabeToList<T>(this DataTable dt) where T : class,new()
+        {
+            List<T> lt = new List<T>();
+            if (dt == null || dt.Rows.Count == 0) { return lt; }
+            int i = 0;
+            PropertyInfo[] pros = typeof(T).GetProperties(BindingFlags.Public);
+            //StringBuilder sb = new StringBuilder();
+            //pros.ForeachOne<PropertyInfo>(e =>
+            //{
+            //    sb.Append(e.Name.ToLower()).Append(",");
+            //});
+            //if (sb.Length > 1)
+            //    sb.Remove(sb.Length - 2, 1);
+            //string sourceProstr = sb.ToString();
+            //List<string> usedItem = new List<string>();
+            //
+            //for (; i < dt.Rows[0].ItemArray.Length; i++)//取出对象属性用到的列
+            //{
+            //    if (sourceProstr.Contains(dt.Columns[i].ColumnName.ToLower())) { usedItem.Add(dt.Columns[i].ColumnName); }
+            //}
+            //if (usedItem.Count == 0) { return lt; }
+            for (i = 0; i < dt.Rows.Count; i++)
+            {
+                DataRow dr = dt.Rows[i];
+                T o = new T();
+                pros = o.GetType().GetProperties(BindingFlags.Public);
+                for (int j = 0; j < pros.Length; j++)
+                {
+                    //dt.Columns.AsQueryable() .Where(e => e.ToLower() == pros[i].Name.ToLower());
+                }
+            }
+            //for (int i = 0; i < dt.Rows.Count; i++)
+            //{
+            //    DataRow dr = dt.Rows[i];
+            //    //T t = default(T);//获得当前对象的默认值
+            //    T s = new T();
+            //    for (int j = 0; j < dr.ItemArray.Length; j++)
+            //    {
+            //        PropertyInfo[] pis = s.GetType().GetProperties();
+            //        pis.Where(e => e.Name.ToLower().Equals(dt.Columns[j].ColumnName.ToLower()))
+            //           .ForeachOne(e =>
+            //           {
+            //               object ores = null;
+            //               if (dr[j].Equals(DBNull.Value))
+            //               {
+            //                   switch (e.PropertyType.Name)//如果数据库是DBNull类型数值就0，引用就null,下面可能没有考虑完全，可以自己在添加上
+            //                   {
+            //                       case "int":
+            //                       case "Int16":
+            //                       case "Int32":
+            //                       case "Int64":
+            //                       case "float":
+            //                       case "double": ores = 0; break;
+            //                       default: ores = default(object); break;
+            //                   }
+            //               }
+            //               else
+            //               {
+            //                   ores = dr[j];
+            //               }
+            //               e.SetValue(s, ores, null);
+            //               //e.SetValue();
+            //           });
+            //    }
+            //    lt.Add(s);
+            //}
+            return lt;
+        }
+
+        ////根据model将Table转成list
+        //public static IEnumerable<T> TabeToList<T>(this DataTable dt) where T : class,new()
+        //{
+        //    if (dt == null) { return null; }
+
+        //    List<T> lt = new List<T>();
+        //    for (int i = 0; i < dt.Rows.Count; i++)
+        //    {
+        //        DataRow dr = dt.Rows[i];
+        //        //T t = default(T);//获得当前对象的默认值
+        //        T s = new T();
+        //        for (int j = 0; j < dr.ItemArray.Length; j++)
+        //        {
+        //            PropertyInfo[] pis = s.GetType().GetProperties();
+        //            pis.Where(e => e.Name.ToLower().Equals(dt.Columns[j].ColumnName.ToLower()))
+        //               .ForeachOne(e =>
+        //               {
+        //                   object ores = null;
+        //                   if (dr[j].Equals(DBNull.Value))
+        //                   {
+        //                       switch (e.PropertyType.Name)//如果数据库是DBNull类型数值就0，引用就null,下面可能没有考虑完全，可以自己在添加上
+        //                       {
+        //                           case "int":
+        //                           case "Int16":
+        //                           case "Int32":
+        //                           case "Int64":
+        //                           case "float":
+        //                           case "double": ores = 0; break;
+        //                           default: ores = default(object); break;
+        //                       }
+        //                   }
+        //                   else
+        //                   {
+        //                       ores = dr[j];
+        //                   }
+        //                   e.SetValue(s, ores, null);
+        //                   //e.SetValue();
+        //               });
+        //        }
+        //        lt.Add(s);
+        //    }
+        //    return lt;
+        //}
+
+        ////根据model将Table转成list
+        //public static IEnumerable<T> TabeToList<T>(this DataTable dt) where T : class,new()
+        //{
+        //    if (dt != null)
+        //    {
+        //        List<T> lt = new List<T>();
+
+        //        //PropertyInfo[] pis = s.GetType().GetProperties();
+        //        PropertyInfo[] pros = typeof(T).GetProperties(BindingFlags.Public);
+        //        Dictionary<string, string> dict = new Dictionary<string, string>();
+        //        pros.ForeachOne(e =>
+        //        {
+        //            dict.Add(e.Name.ToLower(), e.PropertyType.Name);
+        //        });
+        //        for (int i = 0; i < dt.Rows.Count; i++)
+        //        {
+        //            DataRow dr = dt.Rows[i];
+        //            T s = new T();
+        //            PropertyInfo[] sPro=s.GetType().GetProperties(BindingFlags.Public);
+        //            foreach (string key in dict.Keys)
+        //            {
+        //                if(dr[key]!=null)sPro.
+        //            }
+        //            for (int j = 0; j < dr.ItemArray.Length; j++)
+        //            {
+        //                PropertyInfo[] pis = s.GetType().GetProperties();
+        //                pis.Where(e => e.Name.ToLower().Equals(dt.Columns[j].ColumnName.ToLower()))
+        //                   .ForeachOne(e =>
+        //                   {
+        //                       object ores = null;
+        //                       if (dr[j].Equals(DBNull.Value))
+        //                       {
+        //                           switch (e.PropertyType.Name)//如果数据库是DBNull类型数值就0，引用就null,下面可能没有考虑完全，可以自己在添加上
+        //                           {
+        //                               case "int":
+        //                               case "Int16":
+        //                               case "Int32":
+        //                               case "Int64":
+        //                               case "float":
+        //                               case "double": ores = 0; break;
+        //                               default: ores = default(object); break;
+        //                           }
+        //                       }
+        //                       else
+        //                       {
+        //                           ores = dr[j];
+        //                       }
+        //                       e.SetValue(s, ores, null);
+        //                       //e.SetValue();
+        //                   });
+        //            }
+        //            lt.Add(s);
+        //        }
+        //        return lt;
+        //    }
+        //    return null;
+        //}
+
+    }
+
 }

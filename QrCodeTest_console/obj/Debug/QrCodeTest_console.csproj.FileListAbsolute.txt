@@ -6,3 +6,11 @@ C:\Users\xiaobaxiang\documents\visual studio 2012\Projects\qrCodeTest\QrCodeTest
 C:\Users\xiaobaxiang\documents\visual studio 2012\Projects\qrCodeTest\QrCodeTest_console\obj\Debug\QrCodeTest_console.csprojResolveAssemblyReference.cache
 C:\Users\xiaobaxiang\documents\visual studio 2012\Projects\qrCodeTest\QrCodeTest_console\obj\Debug\QrCodeTest_console.exe
 C:\Users\xiaobaxiang\documents\visual studio 2012\Projects\qrCodeTest\QrCodeTest_console\obj\Debug\QrCodeTest_console.pdb
+C:\Users\xiaobaxiang\Documents\visual studio 2012\Projects\qrCodeTestLearn\QrCodeTest_console\bin\Debug\QrCodeTest_console.exe.config
+C:\Users\xiaobaxiang\Documents\visual studio 2012\Projects\qrCodeTestLearn\QrCodeTest_console\bin\Debug\QrCodeTest_console.exe
+C:\Users\xiaobaxiang\Documents\visual studio 2012\Projects\qrCodeTestLearn\QrCodeTest_console\bin\Debug\QrCodeTest_console.pdb
+C:\Users\xiaobaxiang\Documents\visual studio 2012\Projects\qrCodeTestLearn\QrCodeTest_console\bin\Debug\Gma.QrCodeNet.Encoding.dll
+C:\Users\xiaobaxiang\Documents\visual studio 2012\Projects\qrCodeTestLearn\QrCodeTest_console\bin\Debug\Gma.QrCodeNet.Encoding.pdb
+C:\Users\xiaobaxiang\Documents\visual studio 2012\Projects\qrCodeTestLearn\QrCodeTest_console\obj\Debug\QrCodeTest_console.csprojResolveAssemblyReference.cache
+C:\Users\xiaobaxiang\Documents\visual studio 2012\Projects\qrCodeTestLearn\QrCodeTest_console\obj\Debug\QrCodeTest_console.exe
+C:\Users\xiaobaxiang\Documents\visual studio 2012\Projects\qrCodeTestLearn\QrCodeTest_console\obj\Debug\QrCodeTest_console.pdb

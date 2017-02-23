@@ -51,6 +51,7 @@ namespace ConsoleApplication1
             by[2] = 191;
             by[3] = 49;
             string num = Encoding.UTF8.GetString(by);
+            Console.WriteLine(num);
             string str = "1";
             Console.Write(str.GetTypeCode().ToString());
             byte[] b= Encoding.UTF8.GetBytes(str);
